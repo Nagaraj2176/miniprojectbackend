@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Land Details</title>
+  <link rel="stylesheet" href="/static/add_land_details.css">
+</head>
+<body>
+  <div class="container67">
+    <div class="container76">
+      <h1>Add Land Details</h1>
+      <form action="/add_land_details" method="POST" enctype="multipart/form-data">
+        <!-- Land Name -->
+        <div class="input-container">
+          <label for="lname">Land Name:</label>
+          <input type="text" id="lname" name="lname" required><br>
+        </div>
+
+        <!-- Acres -->
+        <div class="input-container">
+          <label for="acres">Acres:</label>
+          <input type="text" id="acres" name="acres" required><br>
+        </div>
+       
+        <!-- Rent -->
+        <div class="input-container">
+          <label for="rent">Rent:</label>
+          <input type="number" id="rent" name="rent" required><br>
+        </div>
+       
+        <!-- Water Source -->
+        <div class="input-container">
+          <label for="watersource">Water Source:</label>
+          <input type="text" id="watersource" name="watersource" required><br>
+        </div>
+       
+
+        <!-- Location -->
+        <div class="input-container">
+          <label for="location">Location:</label>
+          <input type="text" id="location" name="location" required><br>
+        </div>
+
+        <!-- Current Crop -->
+        <div class="input-container">
+          <label for="currentcrop">Current Crop:</label>
+          <input type="text" id="currentcrop" name="currentcrop"><br>
+        </div>
+        
+        <!-- Facing -->
+        <div class="input-container">
+          <label for="facing">Facing:</label>
+          <input type="text" id="facing" name="facing"><br>  
+        </div>
+        
+        <!-- Possession -->
+        <div class="input-container">
+          <label for="poss">Possession:</label>
+          <input type="text" id="poss" name="poss"><br>
+        </div>
+        
+        <!-- Soil -->
+        <div class="input-container">
+          <label for="soil">Soil Type:</label>
+          <input type="text" id="soil" name="soil"><br>
+        </div>
+        
+        <!-- Owner -->
+        <div class="input-container">
+          <label for="owner">Owner Name:</label>
+          <input type="text" id="owner" name="owner" required><br>
+        </div>
+
+        <!-- Gmail -->
+        <div class="input-container">
+          <label for="gmail">Gmail:</label>
+          <input type="email" id="gmail" name="gmail" required><br>  
+        </div>
+        
+        <!-- Properties -->
+        <div class="input-container">
+          <label for="properties">Properties:</label>
+          <input type="text" id="properties" name="properties"><br>
+        </div>
+        
+        <!-- Localities -->
+        <div class="input-container">
+          <label for="localities">Localities:</label>
+          <input type="text" id="localities" name="localities"><br>  
+        </div>
+        
+        <!-- About -->
+        <div class="input-container">
+          <label for="about">About:</label>
+          <textarea id="about" name="about"></textarea><br>
+        </div>
+       
+        <!-- Cover Image -->
+        <div class="input-container coverimg" >
+          <label for="cover_image">Cover Image:</label>
+          <input type="file" id="cover_image" name="cover_image" accept="image/*" required><br>  
+        </div>
+        
+        <div class="input-img">
+          <label for="slider_image1">Slider Image 1:</label>
+          <input type="file" id="slider_image1" name="slider_image1" accept="image/*" required><br>
+          <label for="slider_image2">Slider Image 2:</label>
+          <input type="file" id="slider_image2" name="slider_image2" accept="image/*"><br>
+          <label for="slider_image3">Slider Image 3:</label>
+          <input type="file" id="slider_image3" name="slider_image3" accept="image/*"><br>
+          <label for="slider_image4">Slider Image 4:</label>
+          <input type="file" id="slider_image4" name="slider_image4" accept="image/*"><br>
+          <label for="slider_image5">Slider Image 5:</label>
+          <input type="file" id="slider_image5" name="slider_image5" accept="image/*"><br>  
+        </div>
+        
+        <button class="add_land_details-submit" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

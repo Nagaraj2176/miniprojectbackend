@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop - Connect</title>
+  <link rel="stylesheet" href="/static/land_rental.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <div class="container1">
+    <!-- Filter Section -->
+    <div class="filter-container js-filter-container">
+      <h2>Filter</h2>
+      <form id="filterForm">
+        <label for="location">Location:</label>
+        <select id="location" name="location">
+          <option value="">Select Location</option>
+          <option value="bengaluru">Bengaluru</option>
+          <option value="tumkur">Tumkur</option>
+          <option value="hassan">Hassan</option>
+          <option value="chikamagaluru">Chikamagaluru</option>
+        </select>
+
+        <label>Price Range:</label>
+        <div class="min-max-container">
+          <div class="input-field">
+            <div class="min">Min</div>
+            <input type="number" value="20000">
+          </div>
+          <div class="middle">-</div>
+          <div class="input-field">
+            <div class="max">Max</div>
+            <input type="number" value="90000">
+          </div>
+        </div>
+
+        <label for="acres">Number of Acres:</label>
+        <input type="number" id="acres" name="acres" placeholder="Enter minimum acres">
+
+        <label for="type">Land Type:</label>
+        <select id="type" name="type">
+          <option value="">Any</option>
+          <option value="farmland">Farmland</option>
+          <option value="pasture">Pasture</option>
+          <option value="forest">Forest</option>
+          <option value="pottery">Pottery Farming</option>
+        </select>
+
+        <button class="filter-button" type="button" onclick="filterLands()">Filter</button>
+      </form>
+    </div>
+
+    <!-- Lands Display Section -->
+    <div class="main-land-container">
+      {% for land in lands %}
+      <div class="land-container">
+
+        <div class="land-name">
+          <div class="land15">{{ land.lname }}</div>
+          {% if current_user.is_authenticated %}
+            <button onclick="window.location.href='/add_land_details'" class="view_more1">Add Land Details</button>
+            {% endif %}
+        </div>
+        <div class="product-details-container">
+          <!-- Land Cover Image -->
+          <!-- Assuming this is part of your landrental.html template -->
+          <div class="land-image">
+            {% if land.cover_image %}
+            <img src="data:image/jpeg;base64,{{ land.cover_image | b64encode }}" alt="{{ land.lname }}">
+            {% else %}
+            <img src="https://via.placeholder.com/300" alt="No Image">
+            {% endif %}
+          </div>
+
+
+          <!-- Land Abstract Details -->
+          <div class="abstract-details-container">
+            <div class="data" id="data1">
+              <div>
+                <p>Acres</p>
+                <p class="no-of-acres">{{ land.acres }}</p>
+              </div>
+              <div>
+                <p>Location</p>
+                <p>{{ land.location }}</p>
+              </div>
+            </div>
+            <div class="data">
+              <div>
+                <p>Water</p>
+                <p>{{ 'Yes' if land.watersource else 'No' }}</p>
+              </div>
+              <div>
+                <p>Soil Type</p>
+                <p>{{ land.soil }}</p>
+              </div>
+            </div>
+
+            <!-- View More Button -->
+            <a class="view_more" href="{{ url_for('land_info', land_id=land.id) }}">View More...</a>
+
+            <!-- Add Land Button (Visible to Logged-in Users Only) -->
+            
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    // Load Header Template
+    $('.header_container').load('header.html');
+  </script>
+  <script src="/static/land_rental.js"></script>
+</body>
+</html>
+{% endblock %}

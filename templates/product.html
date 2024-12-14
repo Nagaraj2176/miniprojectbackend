@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmers' Products</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="/static/product.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+  <div class="products-container">
+    {% for product in products %}
+    <div class="product">
+      <img src="data:image/png;base64,{{ product.cover_image | b64encode }}" alt="{{ product.p_name }}">
+      <div class="product-info">
+        <h2>{{ product.p_name }}</h2>
+        <p>{{ product.descr }}</p>
+        <p class="price">₹{{ product.price }}</p>
+        <p style="font-size: 17px;">
+          Contact details: {{ product.contact_no }}<br>
+          Owner name: {{ product.o_name }}<br>
+          Email: {{ product.mail }}
+        </p>
+        <div class="star-rating">
+          <i class="star fas fa-star" data-value="1"></i>
+          <i class="star fas fa-star" data-value="2"></i>
+          <i class="star fas fa-star" data-value="3"></i>
+          <i class="star fas fa-star" data-value="4"></i>
+          <i class="star fas fa-star" data-value="5"></i>
+        </div>
+        <p class="rating-value">Your Rating: <span id="rating">0</span> stars</p>
+        {% if current_user.is_authenticated %}
+        <form action="{{ url_for('add_to_wishlist', product_id=product.id) }}" method="POST" style="margin-bottom: 15px;">
+          <button class="add-to-wishlist" type="submit">Add to Wishlist</button>
+        </form>
+        <div class="add-product-button-container">
+          <a href="{{ url_for('add_product_details') }}" class="add-to-wishlist" style="text-decoration: none;">Add Product</a>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <script src="/static/product.js"></script>
+{% endblock %}

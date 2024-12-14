@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+{% block head %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/static/land_info.css">
+  <link rel="stylesheet" href="/static/footer.css">
+  <title>land-info</title>
+{% endblock %}
+{% block content %}
+
+  <div class="main-container">
+
+    <div class="land_name">{{ land.lname }}</div>
+
+    <div class="abstract_details">
+      <div class="image_container">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            {% if land.slider_image1 %}
+            <div class="swiper-slide">
+              <img src="data:image/png;base64,{{ land.slider_image1 | b64encode }}" alt="Slider Image 1">
+            </div>
+            {% endif %}
+            {% if land.slider_image2 %}
+            <div class="swiper-slide">
+              <img src="data:image/png;base64,{{ land.slider_image2 | b64encode }}" alt="Slider Image 2">
+            </div>
+            {% endif %}
+            {% if land.slider_image3 %}
+            <div class="swiper-slide">
+              <img src="data:image/png;base64,{{ land.slider_image3 | b64encode }}" alt="Slider Image 3">
+            </div>
+            {% endif %}
+            {% if land.slider_image4 %}
+            <div class="swiper-slide">
+              <img src="data:image/png;base64,{{ land.slider_image4 | b64encode }}" alt="Slider Image 4">
+            </div>
+            {% endif %}
+            {% if land.slider_image5 %}
+            <div class="swiper-slide">
+              <img src="data:image/png;base64,{{ land.slider_image5 | b64encode }}" alt="Slider Image 5">
+            </div>
+            {% endif %}
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+      <div class="basic_landdetails">
+        <!-- Land Details -->
+        <div class="details_templates">
+          <div class="data_box">
+            <div class="icons_img">
+              <img src="/static/img/area.png" alt="">
+            </div>
+            <div class="data">
+              <div>Acres</div>
+              <div>{{ land.acres }}</div>
+            </div>
+          </div>
+          <div class="data_box">
+            <div class="icons_img">
+              <img src="/static/img/price-tag.png" alt="">
+            </div>
+            <div class="data">
+              <div>Rent/year</div>
+              <div>{{ land.rent }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="details_templates">
+          <div class="data_box">
+            <div class="icons_img">
+              <img src="/static/img/map.png" alt="">
+            </div>
+            <div class="data">
+              <div>Location</div>
+              <div>{{ land.location }}</div>
+            </div>
+          </div>
+          <div class="data_box">
+            <div class="icons_img">
+              <img src="/static/img/water-tap.png" alt="">
+            </div>
+            <div class="data">
+              <div>Water Source</div>
+              <div>{{ land.watersource }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="details_templates">
+          <div class="data_box">
+            <div class="icons_img">
+              <img src="/static/img/wheat.png" alt="">
+            </div>
+            <div class="data">
+              <div>Current Crop</div>
+              <div>{{ land.currentcrop }}</div>
+            </div>
+          </div>
+          <div class="data_box">
+            <div class="icons_img">
+              <img src="/static/img/compass.png" alt="">
+            </div>
+            <div class="data">
+              <div>Facing</div>
+              <div>{{ land.facing }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="details_templates">
+          <div class="data_box">
+            <div class="icons_img">
+              <img src="/static/img/gate.png" alt="">
+            </div>
+            <div class="data">
+              <div>Possession</div>
+              <div>{{ land.poss }}</div>
+            </div>
+          </div>
+          <div class="data_box">
+            <div class="icons_img">
+              <img src="/static/img/soil.png" alt="">
+            </div>
+            <div class="data">
+              <div>Soil Type</div>
+              <div>{{ land.soil }}</div>
+            </div>
+          </div>
+        </div>
+        <a href="{{url_for('add_to_cart',land_id=land.id)}}"><button class="addtocart">Add to Cart</button></a>
+      </div>
+    </div>
+
+    <div class="owner_container">
+      <div class="owner_detail">Owner Details</div>
+      <div class="owner_details">
+        <div class="owner_img">
+          <img src="/static/img/owner_img.png" alt="">
+        </div>
+        <div class="owner_name">{{ land.owner }}</div>
+        <div class="contact_info">
+          <div class="ownerdetails_template">
+            <div class="contact_no">
+              <div class="data_icons">
+                <img src="/static/img/phone.png" alt="">
+              </div>
+              <div class="data_conatiner">
+                <div>Contact No</div>
+                <div>{{ land.contact }}</div>
+              </div>
+            </div>
+            <div class="gmail">
+              <div class="data_icons">
+                <img src="/static/img/mail.png" alt="">
+              </div>
+              <div class="data_conatiner">
+                <div>Gmail</div>
+                <div>{{ land.gmail }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="ownerdetails_template">
+            <div class="Properties_no">
+              <div class="data_icons">
+                <img src="/static/img/property.png" alt="">
+              </div>
+              <div class="data_conatiner">
+                <div>Properties Listed</div>
+                <div>{{ land.properties }}</div>
+              </div>
+            </div>
+            <div class="Localities">
+              <div class="data_icons">
+                <img src="/static/img/local.png" alt="">
+              </div>
+              <div class="data_conatiner">
+                <div>Localities</div>
+                <div>{{ land.localities }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container3">
+      <div class="mapcontainer">
+        <iframe src="https://www.google.com/maps/embed" frameborder="0"></iframe>
+      </div>
+      <div class="complete_details_container">
+        About Property
+        {{land.about}}
+      </div>
+    </div>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-column">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Price Trends</a></li>
+            <li><a href="#">List Your Land</a></li>
+            <li><a href="#">Equipment Rentals</a></li>
+            <li><a href="#">Investment Opportunities</a></li>
+            <li><a href="#">Farmers Directory</a></li>
+            <li><a href="#">Area Converter</a></li>
+            <li><a href="#">Articles</a></li>
+            <li><a href="#">Invoice Generator</a></li>
+            <li><a href="#">Customer Service</a></li>
+            <li><a href="#">Sitemap</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Request Info</a></li>
+            <li><a href="#">Feedback</a></li>
+            <li><a href="#">Report a Problem</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Safety Guide</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Our Partners</h4>
+          <ul>
+            <li><a href="#">AgriJobs.com</a></li>
+            <li><a href="#">AgriMatrimony.com</a></li>
+            <li><a href="#">FarmNetworking.com</a></li>
+            <li><a href="#">PolicyBazaar.com</a></li>
+            <li><a href="#">LoanBazaar.com</a></li>
+            <li><a href="#">AmbitionBox.com</a></li>
+            <li><a href="#">TechFarms.com</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact Us</h4>
+          <p>Toll-Free: <a href="tel:18004199099">1800 41 99099</a></p>
+          <p>Mon - Sat (9:00AM to 11:00PM)</p>
+          <p>Email: <a href="mailto:feedback@agrirental.com">feedback@agrirental.com</a></p>
+          <div class="social-media">
+            <a href="#"><img src="/static/img/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="/static/img/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="/static/img/twitter.png" alt="Twitter"></a>
+          </div>
+          <div class="mobile-app">
+            <p>Download Our App:</p>
+            <a href="#"><img src="/static/img/playstore.png" alt="Google Play"></a>
+            <a href="#"><img src="/static/img/appstore.png" alt="App Store"></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/static/land_info.js"></script>
+{% endblock %}
+
+

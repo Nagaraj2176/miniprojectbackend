@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+{% block head %}
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  {% block title %}About Us {% endblock %}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/about.css">
+  <link rel="stylesheet" href="/static/footer.css">
+{% endblock %}
+
+{% block content %}
+  <main>
+   <div class="carousel slide" data-bs-ride="carousel" id="myCarousel">
+    <div class="carousel-indicators">
+     <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#myCarousel" type="button">
+     </button>
+     <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#myCarousel" type="button">
+     </button>
+     <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#myCarousel" type="button">
+     </button>
+    </div>
+    <div class="carousel-inner">
+     <div class="carousel-item active">
+        <div class="sliderimg-container">
+          <img class="slideimg" alt="Placeholder image of a scenic landscape" class="d-block w-100" src="/static/img/aboutus-sliderimg5.webp" width="100%"/>
+        </div>
+          <div class="container">
+       <div class="carousel-caption text-start">
+        <h1>
+         connectivity
+        </h1>
+        <p>
+            Connecting Farmers to Resources, Knowledge, and Markets.
+        </p>
+        <p>
+         <a class="btn" href="{{url_for('signup')}}" target="_blank">
+          Sign up today
+         </a>
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="carousel-item">
+        <div class="sliderimg-container">
+             <img class="slideimg" alt="Placeholder image of a city skyline" class="d-block w-100" src="/static/img/aboutus-sliderimg4.webp" width="100%" />
+        </div>
+      <div class="container">
+       <div class="carousel-caption text-end">
+        <h1>
+            Harvest
+        </h1>
+        <p>
+            From Seed to Harvest: Your Agricultural Partner.
+        </p>
+        <p>
+        </p>
+       </div>
+      </div>
+     </div>
+     <div class="carousel-item">
+        <div class="sliderimg-container">
+            <img class="slideimg" alt="Placeholder image of a mountain range" class="d-block w-100" src="/static/img/aboutus-sliderimg8.webp" width="100%"/>
+        </div>
+        <div class="container">
+       <div class="carousel-caption text-end">
+        <h1>
+            Innovate
+        </h1>
+        <p>
+            Where Tradition Meets Innovation in Farming.
+        </p>
+        <p>
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#myCarousel" type="button">
+     <span aria-hidden="true" class="carousel-control-prev-icon">
+     </span>
+     <span class="visually-hidden">
+      Previous
+     </span>
+    </button>
+    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#myCarousel" type="button">
+     <span aria-hidden="true" class="carousel-control-next-icon">
+     </span>
+     <span class="visually-hidden">
+      Next
+     </span>
+    </button>
+   </div>
+   <div class="container">
+    <div class="row service">
+     <div class="col-lg-4">
+      <img class="slideimg" alt="Placeholder image of a person" class="bd-placeholder-img" src="/static/img/landrent-aboutus.webp" />
+      <h2>
+        Land Rental
+      </h2>
+      <p>
+        Crop Connect provides a platform for farmers to easily access land rental opportunities, facilitating connections between landowners and those seeking to rent land for agricultural purposes. This service is designed to streamline the process of finding suitable land, making it more efficient and less time-consuming.
+      </p>
+     </div>
+     <div class="col-lg-4">
+      <img class="slideimg" alt="Placeholder image of a person" class="bd-placeholder-img" src="/static/img/ecquipmentrent_aboutus.jpg"/>
+      <h2>
+        Equipment Rental
+      </h2>
+      <p>
+        Crop Connect offers a specialized equipment rental service designed to meet the diverse needs of farmers and agricultural professionals. This platform facilitates access to a wide range of agricultural machinery, allowing users to rent equipment as needed without the burden of ownership costs.
+      </p>
+     </div>
+     <div class="col-lg-4">
+      <img class="slideimg" alt="Placeholder image of a person" class="bd-placeholder-img" src="/static/img/product-aboutus.webp"/>
+      <h2>
+        Products
+      </h2>
+      <p>
+        Crop Connect serves as a vital platform for promoting local agricultural products by connecting farmers directly with consumers, retailers, and other stakeholders in the agricultural supply chain. This initiative emphasizes the importance of local sourcing and supports farmers in marketing their produce effectively.
+      </p>
+     </div>
+    </div>
+    <hr class="featurette-divider"/>
+    <div class="row featurette">
+     <div class="col-md-7">
+      <h2 class="featurette-heading">
+        Mission 
+       <span class="text-muted">
+        Statement :
+       </span>
+      </h2>
+      <p class="lead">
+        To empower farmers by providing easy access to resources, expert knowledge, and market opportunities through a seamless digital platform
+      </p>
+     </div>
+     <div class="col-md-5">
+      <img class="slideimg" alt="Placeholder image of a featurette" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" height="300" src="/static/img/aboutus2.webp" width="500"/>
+     </div>
+    </div>
+    <hr class="featurette-divider"/>
+    <div class="row featurette">
+     <div class="col-md-7 order-md-2">
+      <h2 class="featurette-heading">
+        Vision 
+       <span class="text-muted">
+        Statement :
+       </span>
+      </h2>
+      <p class="lead">
+        To transform the agricultural landscape by fostering a connected community of farmers and stakeholders that enhances productivity and sustainability.
+      </p>
+     </div>
+     <div class="col-md-5 order-md-1">
+      <img class="slideimg" alt="Placeholder image of a featurette" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" height="300" src="/static/img/aboutus4.webp" width="500"/>
+     </div>
+    </div>
+    <hr class="featurette-divider"/>
+    <div class="row featurette">
+     <div class="col-md-7">
+      <h2 class="featurette-heading">
+        Objectives 
+       <span class="text-muted">
+        of Crop Connect :
+       </span>
+      </h2>
+      <p class="lead">
+        Facilitate access to land and machinery rentals. <br>
+        Enhance knowledge sharing between farmers and educators. <br>
+        Improve marketing strategies for farmers' products. <br>
+        Streamline communication among all agricultural stakeholders.
+      </p>
+     </div>
+     <div class="col-md-5">
+      <img class="slideimg" alt="Placeholder image of a featurette" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" height="300" src="/static/img/aboutus3.webp" width="500"/>
+     </div>
+    </div>
+    <hr class="featurette-divider"/>
+    <div class="row featurette">
+     <div class="col-md-7 order-md-2 ourteam">
+      <h2 class="featurette-heading">
+        Our Team
+       <!-- <span class="text-muted">
+        See for yourself.
+       </span> -->
+      </h2>
+      <p class="lead">
+        Founder/CEO :Manish P USN : 80 <br>
+        CTO : Manoj KS , Manasvi M, Lohith KM , Nagaraj <br>
+        Agricultural Advisor : Lohith KM <br>
+      </p>
+      <h2 class="featurette-heading">
+       <span class="text-muted">
+        Contact
+       </span>
+      </h2>
+      <p class="lead">
+        Email: contact@cropconnect.com <br>
+        Phone: +1-234-567-8901
+      </p>
+     </div>
+     <div class="col-md-5 order-md-1">
+      <img class="slideimg" alt="Placeholder image of a featurette" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto " height="400" src="/static/img/aboutus1.webp" width="500"/>
+     </div>
+     
+    </div>
+    <hr class="featurette-divider"/>
+   </div>
+   <div class="moto">
+    <h2>
+        "Join us in transforming agriculture! Sign up today to connect with fellow farmers and access valuable resources."
+    </h2>
+   </div>
+   <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#">Our Services</a></li>
+          <li><a href="#">Price Trends</a></li>
+          <li><a href="#">List Your Land</a></li>
+          <li><a href="#">Equipment Rentals</a></li>
+          <li><a href="#">Investment Opportunities</a></li>
+          <li><a href="#">Farmers Directory</a></li>
+          <li><a href="#">Area Converter</a></li>
+          <li><a href="#">Articles</a></li>
+          <li><a href="#">Invoice Generator</a></li>
+          <li><a href="#">Customer Service</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Request Info</a></li>
+          <li><a href="#">Feedback</a></li>
+          <li><a href="#">Report a Problem</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Safety Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Our Partners</h4>
+        <ul>
+          <li><a href="#">AgriJobs.com</a></li>
+          <li><a href="#">AgriMatrimony.com</a></li>
+          <li><a href="#">FarmNetworking.com</a></li>
+          <li><a href="#">PolicyBazaar.com</a></li>
+          <li><a href="#">LoanBazaar.com</a></li>
+          <li><a href="#">AmbitionBox.com</a></li>
+          <li><a href="#">TechFarms.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contact Us</h4>
+        <p>Toll-Free: <a href="tel:18004199099">1800 41 99099</a></p>
+        <p>Mon - Sat (9:00AM to 11:00PM)</p>
+        <p>Email: <a href="mailto:feedback@agrirental.com">feedback@agrirental.com</a></p>
+        <div class="social-media">
+          <a href="#"><img src="/static/img/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="/static/img/instagram.png" alt="Instagram"></a>
+          <a href="#"><img src="/static/img/twitter.png" alt="Twitter"></a>
+        </div>
+        <div class="mobile-app">
+          <p>Download Our App:</p>
+          <a href="#"><img src="/static/img/playstore.png" alt="Google Play"></a>
+          <a href="#"><img src="/static/img/appstore.png" alt="App Store"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </main>
+  <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+{% endblock %}

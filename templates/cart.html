@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Connect - Favorites</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .favorites-section {
+            margin-bottom: 40px;
+        }
+        .favorites-section h2 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+        .favorites-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+        }
+        .favorite-item {
+            width: 30%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        .favorite-item img {
+            width: 100%;
+            height: auto;
+        }
+        .favorite-item .details {
+            padding: 10px;
+        }
+        .favorite-item .details h3 {
+            margin: 0 0 10px;
+        }
+        .favorite-item .details p {
+            margin: 0 0 10px;
+        }
+        .favorite-item .details .remove-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<nav class="bg-green-600 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="{{url_for('home')}}">
+            <div class="text-white text-lg font-bold">
+                Crop Connect
+            </div>
+        </a>
+        <div class="space-x-4">
+            <a href="{{ url_for('land_rental') }}" class="text-white">Land Rentals</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h1>Favorites</h1>
+    <div class="favorites-section">
+        <h2>Land Rentals</h2>
+        <div class="favorites-list">
+            {% for item in cart_items %}
+            <div class="favorite-item">
+                {% if item.land.cover_image %}
+                <img src="data:image/png;base64,{{ item.land.cover_image | b64encode }}" alt="{{ item.land.lname }}">
+                {% else %}
+                <img src="https://via.placeholder.com/300x200?text=No+Image" alt="No Image">
+                {% endif %}
+                <div class="details">
+                    <h3>{{ item.land.lname }}</h3>
+                    <p>Location: {{ item.land.location }}</p>
+                    <p>Size: {{ item.land.acres }} acres</p>
+                    <form action="{{ url_for('remove_from_cart', land_id=item.land.id) }}" method="post">
+                        <button class="remove-btn" type="submit">
+                            <i class="fas fa-trash-alt"></i> Remove
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="favorites-section">
+        <h2>Equipment Rentals</h2>
+        <div class="favorites-list">
+            {% for item in equipment_cart_items %}
+            <div class="favorite-item">
+                <img src="data:image/png;base64,{{ item.equipment.cover_image | b64encode }}" alt="{{ item.equipment.name }}">
+                <div class="details">
+                    <h3>{{ item.equipment.name }}</h3>
+                    <p>Model: {{ item.equipment.model }}</p>
+                    <p>Height: {{ item.equipment.height }} m</p>
+                    <form action="{{ url_for('remove_from_equipment_cart', equi_id=item.equipment.id) }}" method="post">
+                        <button class="remove-btn" type="submit">
+                            <i class="fas fa-trash-alt"></i> Remove
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="favorites-section">
+        <h2>Wishlist</h2>
+        <div class="favorites-list">
+            {% for item in wishlist_items %}
+            <div class="favorite-item">
+                <img src="data:image/png;base64,{{ item.product.cover_image | b64encode }}" alt="{{ item.product.p_name }}">
+                <div class="details">
+                    <h3>{{ item.product.p_name }}</h3>
+                    <p>{{ item.product.descr }}</p>
+                    <p class="price">₹{{ item.product.price }}</p>
+                    <form action="{{ url_for('remove_from_wishlist', product_id=item.product.id) }}" method="post">
+                        <button type="submit" class="remove-btn">Remove</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

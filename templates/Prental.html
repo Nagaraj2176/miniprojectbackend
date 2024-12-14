@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+{% block head %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop - Connect</title>
+  <link rel="stylesheet" href="/static/Prental.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+  <div class="container1">
+    <!-- Filter Section -->
+    <div class="filter-container">
+      <h2>Filter</h2>
+      <form id="filterForm">
+        <label for="location">Location:</label>
+        <select id="location" name="location">
+          <option value="">Select Location</option>
+          <option value="bengaluru">Bengaluru</option>
+          <option value="tumkur">Tumkur</option>
+          <option value="hassan">Hassan</option>
+          <option value="chikamagaluru">Chikamagaluru</option>
+        </select>
+
+        <label>Price Range:</label>
+        <div class="min-max-container">
+          <div class="input-field">
+            <div class="min">Min</div>
+            <input type="number" name="min_price" value="200">
+          </div>
+          <div class="middle">-</div>
+          <div class="input-field">
+            <div class="max">Max</div>
+            <input type="number" name="max_price" value="900">
+          </div>
+        </div>
+
+        <label for="type">Equipment Type:</label>
+        <select id="type" name="type">
+          <option value="">Any</option>
+          <option value="tractor">Tractor</option>
+          <option value="harvester">Harvester</option>
+          <option value="plough">Plough</option>
+        </select>
+
+        <button class="filter-button" type="button" onclick="filterEquipment()">Filter</button>
+      </form>
+    </div>
+
+    <!-- Equipment Display Section -->
+    <div class="main-equipment-container">
+      {% for equip in equipment %}
+      <div class="equipment-container">
+        <div class="equipment-name">{{ equip.name }}</div>
+        <div class="product-details-container">
+          <!-- Equipment Cover Image -->
+          <div class="equipment-image">
+            {% if equip.cover_image %}
+            <img src="data:image/jpeg;base64,{{ equip.cover_image | b64encode }}" alt="{{ equip.name }}">
+            {% else %}
+            <img src="https://via.placeholder.com/300" alt="No Image">
+            {% endif %}
+          </div>
+
+          <!-- Equipment Abstract Details -->
+          <div class="abstract-details-container">
+            <div class="data" id="data1">
+              <div>
+                <p>Height</p>
+                <p class="height">{{ equip.height }}</p>
+              </div>
+              <div>
+                <p>Location</p>
+                <p>{{ equip.location }}</p>
+              </div>
+            </div>
+            <div class="data">
+              <div>
+                <p>Width</p>
+                <p>{{ equip.width }}</p>
+              </div>
+              <div>
+                <p>Power</p>
+                <p>{{ equip.power }} HP</p>
+              </div>
+            </div>
+
+            <!-- View More Button -->
+            <a class="view_more" href="{{ url_for('equi_info', equi_id=equip.id) }}">View More...</a>
+
+            <!-- Add Equipment Button (Visible to Logged-in Users Only) -->
+            {% if current_user.is_authenticated %}
+            <button onclick="window.location.href='/add_equipment_details'" class="view_more">Add Equipment Details</button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

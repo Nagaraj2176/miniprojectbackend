@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product Details</title>
+  <link rel="stylesheet" href="/static/add_land_details.css">
+</head>
+<body>
+  <div class="container67">
+    <div class="container76">
+      <h1>Add Product Details</h1>
+      <form action="/add_product_details" method="POST" enctype="multipart/form-data">
+        
+        <!-- Product Name -->
+        <div class="input-container">
+          <label for="p_name">Product Name:</label>
+          <input type="text" id="p_name" name="p_name" required><br>
+        </div>
+
+        <!-- Description -->
+        <div class="input-container">
+          <label for="descr">Description:</label>
+          <textarea id="descr" name="descr" required></textarea><br>
+        </div>
+
+        <!-- Price -->
+        <div class="input-container">
+          <label for="price">Price:</label>
+          <input type="number" id="price" name="price" required><br>
+        </div>
+        
+        <!-- Contact Number -->
+        <div class="input-container">
+          <label for="contact_no">Contact Number:</label>
+          <input type="text" id="contact_no" name="contact_no" required><br>
+        </div>
+
+        <!-- Owner Name -->
+        <div class="input-container">
+          <label for="o_name">Owner Name:</label>
+          <input type="text" id="o_name" name="o_name" required><br>
+        </div>
+
+        <!-- Email -->
+        <div class="input-container">
+          <label for="mail">Email:</label>
+          <input type="email" id="mail" name="mail"><br>
+        </div>
+
+        <!-- Cover Image -->
+        <div class="input-container coverimg">
+          <label for="cover_image">Cover Image:</label>
+          <input type="file" id="cover_image" name="cover_image" accept="image/*" required><br>
+        </div>
+
+        <button class="add_land_details-submit" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

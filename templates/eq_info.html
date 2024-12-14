@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+{% block head %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/static/eq_info.css">
+    <link rel="stylesheet" href="/static/footer.css">
+    
+  <title>eq-info</title>
+{% endblock %}
+{% block content %}
+
+  <div class="main-container">
+
+    <div class="Disc_Harrow">{{ equipm.name }}</div>
+
+    <div class="abstract_details">
+
+      <div class="image_container">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z"/></svg>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            {% if equipm.slider_image1 %}
+            <div class="swiper-slide">
+              <img src="data:image/png;base64,{{ equipm.slider_image1 | b64encode }}" alt="Slider Image 1">
+            </div>
+            {% endif %}
+            {% if equipm.slider_image2 %}
+            <div class="swiper-slide">
+              <img src="data:image/png;base64,{{ equipm.slider_image2 | b64encode }}" alt="Slider Image 2">
+            </div>
+            {% endif %}
+            {% if equipm.slider_image3 %}
+            <div class="swiper-slide">
+              <img src="data:image/png;base64,{{ equipm.slider_image3 | b64encode }}" alt="Slider Image 3">
+            </div>
+            {% endif %}
+            {% if equipm.slider_image4 %}
+            <div class="swiper-slide">
+              <img src="data:image/png;base64,{{ equipm.slider_image4 | b64encode }}" alt="Slider Image 4">
+            </div>
+            {% endif %}
+            {% if equipm.slider_image5 %}
+            <div class="swiper-slide">
+              <img src="data:image/png;base64,{{ equipm.slider_image5 | b64encode }}" alt="Slider Image 5">
+            </div>
+            {% endif %}
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+      <div class="basic_Equipmentdetails">
+        <div class="details_templates">
+            <div class="data_box">
+          
+            <div class="data">
+              <div>Height</div>
+              <div>{{equipm.height}}</div>
+            </div>
+          </div>
+
+          <div class="data_box">
+          
+            <div class="data">
+              <div>Lenght</div>
+              <div>{{equipm.length}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="details_templates">
+          <div class="data_box">
+            
+            <div class="data">
+              <div>Model</div>
+              <div>{{equipm.model}}</div>
+            </div>
+          </div>
+          <div class="data_box">
+            
+            <div class="data">
+              <div>Width</div>
+              <div>{{equipm.width}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="details_templates">
+          <div class="data_box">
+            
+            <div class="data">
+              <div>Country of origin</div>
+              <div>{{equipm.coo}}</div>
+            </div>
+          </div>
+          <div class="data_box">
+            
+            <div class="data">
+              <div>Weigt</div>
+              <div>{{equipm.weight}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="details_templates">
+          <div class="data_box">
+            
+            <div class="data">
+              <div>Trackor Power</div>
+              <div>{{equipm.power}}hp</div>
+            </div>
+          </div>
+          <div class="data_box">
+            
+            <div class="data">
+              <div>Type</div>
+              <div>{{equipm.year}}</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <form action="{{ url_for('add_equipment_to_cart', equi_id=equipm.id) }}" method="post">
+              <button type="submit" class="addtocart">Add to Cart</button>
+          </form>
+        </div>
+      
+      </div>
+
+      </div>
+    </div>
+    <div class="owner_container">
+      <div class="owner_detail">owner details</div>
+      <div class="owner_details">
+        <div class="owner_img">
+          <img src="/static/img/owner_img.png" alt="">
+        </div>
+        <div class="owner_name">{{equipm.owner_name}}</div>
+        <div class="contact_info">
+          <div class="ownerdetails_template">
+            <div class="contact_no">
+              <div class="data_icons">
+                <img src="/static/img/phone.png" alt="">
+              </div>
+              <div class="data_conatiner">
+                <div>contact no</div>
+                <div>{{equipm.contact_no}}</div>
+              </div>
+            </div>
+            <div class="gmail">
+              <div class="data_icons">
+                <img src="/static/img/mail.png" alt="">
+              </div>
+              <div class="data_conatiner">
+                <div>gmail</div>
+                <div>{{equipm.gmail}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="ownerdetails_template">
+            <div class="Properties_no">
+              <div class="data_icons">
+                <img src="/static/img/property.png" alt="">
+              </div>
+              <div class="data_conatiner">
+                <div>Equipment listed</div>
+                <div>{{equipm.equi_listed}}</div>
+              </div>
+            </div>
+            <div class="Localities">
+              <div class="data_icons">
+                <img src="/static/img/local.png" alt="">
+              </div>
+              <div class="data_conatiner">
+                <div>Localities</div>
+                <div>{{equipm.location}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container3">
+      <div class="mapcontainer">
+        <iframe src="https://www.google.com/maps/embed" frameborder="0"></iframe>
+      </div>
+      <div class="complete_details_container">
+        About 
+    </div>
+    
+  </div>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#">Our Services</a></li>
+          <li><a href="#">Price Trends</a></li>
+          <li><a href="#">List Your Land</a></li>
+          <li><a href="#">Equipment Rentals</a></li>
+          <li><a href="#">Investment Opportunities</a></li>
+          <li><a href="#">Farmers Directory</a></li>
+          <li><a href="#">Area Converter</a></li>
+          <li><a href="#">Articles</a></li>
+          <li><a href="#">Invoice Generator</a></li>
+          <li><a href="#">Customer Service</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Request Info</a></li>
+          <li><a href="#">Feedback</a></li>
+          <li><a href="#">Report a Problem</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Safety Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Our Partners</h4>
+        <ul>
+          <li><a href="#">AgriJobs.com</a></li>
+          <li><a href="#">AgriMatrimony.com</a></li>
+          <li><a href="#">FarmNetworking.com</a></li>
+          <li><a href="#">PolicyBazaar.com</a></li>
+          <li><a href="#">LoanBazaar.com</a></li>
+          <li><a href="#">AmbitionBox.com</a></li>
+          <li><a href="#">TechFarms.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contact Us</h4>
+        <p>Toll-Free: <a href="tel:18004199099">1800 41 99099</a></p>
+        <p>Mon - Sat (9:00AM to 11:00PM)</p>
+        <p>Email: <a href="mailto:feedback@agrirental.com">feedback@agrirental.com</a></p>
+        <div class="social-media">
+          <a href="#"><img src="/static/img/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="/static/img/instagram.png" alt="Instagram"></a>
+          <a href="#"><img src="/static/img/twitter.png" alt="Twitter"></a>
+        </div>
+        <div class="mobile-app">
+          <p>Download Our App:</p>
+          <a href="#"><img src="/static/img/playstore.png" alt="Google Play"></a>
+          <a href="#"><img src="/static/img/appstore.png" alt="App Store"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="/static/land_info.js"></script>
+  {% endblock %}

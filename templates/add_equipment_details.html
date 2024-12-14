@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Equipment Details</title>
+  <link rel="stylesheet" href="/static/add_land_details.css">
+</head>
+<body>
+  <div class="container67">
+    <div class="container76">
+      <h1>Add Equipment Details</h1>
+      <form action="/add_equipment_details" method="POST" enctype="multipart/form-data">
+        <!-- Equipment Name -->
+        <div class="input-container">
+          <label for="name">Equipment Name:</label>
+          <input type="text" id="name" name="name" required><br>
+        </div>
+
+        <!-- Height -->
+        <div class="input-container">
+          <label for="height">Height (cm):</label>
+          <input type="number" id="height" name="height" required><br>
+        </div>
+
+        <!-- Length -->
+        <div class="input-container">
+          <label for="length">Length (cm):</label>
+          <input type="number" id="length" name="length" required><br>
+        </div>
+
+        <!-- Width -->
+        <div class="input-container">
+          <label for="width">Width (cm):</label>
+          <input type="number" id="width" name="width" required><br>
+        </div>
+
+        <!-- Model -->
+        <div class="input-container">
+          <label for="model">Model:</label>
+          <input type="text" id="model" name="model"><br>
+        </div>
+
+        <!-- Country of Origin -->
+        <div class="input-container">
+          <label for="coo">Country of Origin:</label>
+          <input type="text" id="coo" name="coo"><br>
+        </div>
+
+        <!-- Weight -->
+        <div class="input-container">
+          <label for="weight">Weight (kg):</label>
+          <input type="number" id="weight" name="weight" required><br>
+        </div>
+
+        <!-- Power -->
+        <div class="input-container">
+          <label for="power">Power (HP):</label>
+          <input type="number" id="power" name="power" required><br>
+        </div>
+
+        <!-- Year of Manufacture -->
+        <div class="input-container">
+          <label for="year">Year of Manufacture:</label>
+          <input type="number" id="year" name="year" required><br>
+        </div>
+
+        <!-- Owner Name -->
+        <div class="input-container">
+          <label for="owner_name">Owner Name:</label>
+          <input type="text" id="owner_name" name="owner_name" required><br>
+        </div>
+
+        <!-- Contact Number -->
+        <div class="input-container">
+          <label for="contact_no">Contact Number:</label>
+          <input type="number" id="contact_no" name="contact_no" required><br>
+        </div>
+
+        <!-- Gmail -->
+        <div class="input-container">
+          <label for="gmail">Gmail:</label>
+          <input type="email" id="gmail" name="gmail" required><br>
+        </div>
+
+        <!-- Equipment Listed -->
+        <div class="input-container">
+          <label for="equi_listed">Equipment Listed:</label>
+          <input type="text" id="equi_listed" name="equi_listed"><br>
+        </div>
+
+        <!-- Location -->
+        <div class="input-container">
+          <label for="location">Location:</label>
+          <input type="text" id="location" name="location"><br>
+        </div>
+
+        <!-- Cover Image -->
+        <div class="input-container coverimg">
+          <label for="cover_image">Cover Image:</label>
+          <input type="file" id="cover_image" name="cover_image" accept="image/*" required><br>
+        </div>
+
+        <div class="input-img">
+          <label for="slider_image1">Slider Image 1:</label>
+          <input type="file" id="slider_image1" name="slider_image1" accept="image/*" required><br>
+          <label for="slider_image2">Slider Image 2:</label>
+          <input type="file" id="slider_image2" name="slider_image2" accept="image/*"><br>
+          <label for="slider_image3">Slider Image 3:</label>
+          <input type="file" id="slider_image3" name="slider_image3" accept="image/*"><br>
+          <label for="slider_image4">Slider Image 4:</label>
+          <input type="file" id="slider_image4" name="slider_image4" accept="image/*"><br>
+          <label for="slider_image5">Slider Image 5:</label>
+          <input type="file" id="slider_image5" name="slider_image5" accept="image/*"><br>
+        </div>
+
+        <button class="add_land_details-submit" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
